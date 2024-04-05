@@ -3,7 +3,16 @@ document.addEventListener('keypress', function (e) {
         fortnite_start();
     }
 });
-let health = 100;
+let Health = 100;
+let MeleeWeapon = false;
+let RangedWeapon = false;
+let Shotgun = false;
+let Shield = 0;
+let attack_les = 0;
+let attack_mesto = 0;
+let choice = 0;
+let playercount = 100;
+let randomNum = 0;
 
 function fortnite_start() {
     let Username = prompt("Jak se jmenuješ?: ")
@@ -37,27 +46,79 @@ function fortnite_start() {
         }
         alert("Objevil ses v disco autobuse letícím nad ostrovem. Musíš se rozhodnout, kam chceš skočit.")
         let choice = prompt("▐ 1. Spadnout do lesa▐ 2. Spadnout do města▐ 3. Spadnout na pláž▐ (1/2/3): ")
+
+        
         switch(choice) {
+
+
+                // LOKACE: LES
             case "1":
+                
                 alert("skočil jsi do lesa. Vidíš v dálce nějakou chatrč a vydáš se k ní.")
                 alert("V dálce slyšíš střelbu ale to nevadí protože si našel truhlu, kterou si otevřel a spadl ti nožík..")
-                let MeleeWeapon = True;
-                let attack = prompt("Běží k tobě hráč chceš použít nůž na obranu? (+2damage) (ano/ne): ")
-                if (attack === "ano") {
-                    let health =- 10;
-                    let MeleeWeapon = False;
-                    alert("Zabil jsi hráče, ale zranil ses a během boje se ti rozbil nůž. Tvé zdraví je nyní " + health + " hp.")
+                let MeleeWeapon = true;
+                let attack_les = prompt("Běží k tobě hráč chceš použít nůž na obranu? (+2damage) (ano/ne): ")
+                // potkání hráče, použití zbraně 
+
+                // hráč použil zbraň neztratil žádné hp
+                if (attack_les == "ano") {
+                    MeleeWeapon = false;
+                    alert("Zabil jsi hráče, ale během boje se ti rozbil nůž. Tvé zdraví je nyní " + Health + " hp.")
+                    alert("Inventář: Prázdný")
+                    let randomNum = Math.floor(Math.random() * 6) + 1;
+                    playercount = playercount - randomNum;
+                    alert("Počet hráčů ve hře: " + playercount + " hráčů")
+                  
                 }
+                
+
+                // hráč nepoužil zbraň ztratil 15hp
                 else {
-                    let health =- 20;
-                    alert("Dal ti zabrat ale porazil si ho. Tvé zdraví je nyní " + health + " hp.")
+                    Health = Health - 15;
+                    alert("Dal ti zabrat ale porazil si ho. Tvé zdraví je nyní " + Health + " hp.")
                     alert("Inventář: Nůž")
+                    let randomNum = Math.floor(Math.random() * 3) + 1;
+                    playercount = playercount - randomNum;
+                    alert("Počet hráčů ve hře: " + playercount + " hráčů")
+                    
                 }
                 break;
+
+            
+            // LOKACE: MĚSTO    
             case "2":
                 alert("skočil jsi do města. Zde je hodně lidí a musíš být opatrný. Zaběhl jsi do první budovy, kterou jsi viděl.")
                 alert("V budově jsi našel brokovnici")
+                let Shotgun = true;
+                let attack_mesto = prompt("Začne se na tebe někdo řítit chceš použít brokovnici? (+10damage) (ano/ne): ")
+            
+                // potkání hráče, použití zbraně
+                if (attack_mesto == "ano") {
+                    Shotgun = false;
+                    alert("Zabil jsi hráče, ale během boje se ti zasekla brokovnice. Tvé zdraví je nyní " + Health + " hp.")
+                    alert("Inventář: Prázdný")
+                    let randomNum = Math.floor(Math.random() * 10) + 1;
+                    playercount = playercount - randomNum;
+                    alert("Počet hráčů ve hře: " + playercount-randomNum + " hráčů")
+                    
+                }
+                // hráč nepoužil zbraň ztratil 17hp
+                else {
+                    Health = Health - 17;
+                    alert("Dal ti zabrat ale porazil si ho. Tvé zdraví je nyní " + Health + " hp.")
+                    alert("Inventář: Brokovnice")
+                    let randomNum = Math.floor(Math.random() * 3) + 1;
+                    playercount = playercount - randomNum;
+                    alert("Počet hráčů ve hře: " + playercount + " hráčů")
+                    
+                
+                }
                 break;
+
+
+
+
+            // LOKACE: PLÁŽ    
             case "3":
                 alert("skočil jsi na pláž. Zde je klid a pohoda.")
                 break;
