@@ -1,0 +1,46 @@
+
+body{
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url(fortnite_bg.jpg);
+    background-size: cover;
+   }
+   
+   
+   .container{
+       position: static;
+       display: flex;
+       justify-content: center;
+       padding-top: 50vh;
+   }
+   .container button{
+       width: 10vw;
+       height: 10vh;
+       font-size: 1.5em;
+       background-color: #4CAF50;
+       border: 1px solid #0a800e;
+       color: white;
+       border: none;
+       border-radius: 5px;
+       cursor: pointer;
+       transition: 0.3s;
+   }
+   .container button:hover{
+       background-color: #f85c01;
+       border: 1px solid #6e2901;
+       
+   }
+   @media (max-width: 1625px){
+    body{
+        background-size: auto;
+        backface-visibility: hidden;
+    }
+   }
+   
+   @media (max-width: 768px){
+    
+       .container button{
+           width: 100%;
+           height: 10vh;
+           font-size: 1.8em;
+       }
+   }
