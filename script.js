@@ -14,6 +14,7 @@ let choice = 0;
 let playercount = 100;
 let randomNum = 0;
 let choice_late_game = 0;
+let final_choice = 0;
 
 function fortnite_start() {
     let Username = prompt("Jak se jmenuješ?: ")
@@ -69,7 +70,7 @@ function fortnite_start() {
                     alert("Inventář: Prázdný")
                     let randomNum = Math.floor(Math.random() * 6) + 1;
                     playercount = playercount - randomNum;
-                    alert("Počet hráčů ve hře: " + playercount + " hráčů")
+                    alert("Počet hráčů ve hře: " + playercount)
                   
                 }
                 
@@ -78,10 +79,14 @@ function fortnite_start() {
                 else {
                     Health = Health - 15;
                     alert("Dal ti zabrat ale porazil si ho. Tvé zdraví je nyní " + Health + " hp.")
+                    if (Health <= 0) {
+                        alert("Prohrál jsi! Zemřel jsi a hra končí.")
+                        return;
+                    }
                     alert("Inventář: Nůž")
                     let randomNum = Math.floor(Math.random() * 3) + 1;
                     playercount = playercount - randomNum;
-                    alert("Počet hráčů ve hře: " + playercount + " hráčů")
+                    alert("Počet hráčů ve hře: " + playercount)
                     
                 }
                 break;
@@ -101,17 +106,21 @@ function fortnite_start() {
                     alert("Inventář: Prázdný")
                     let randomNum = Math.floor(Math.random() * 10) + 1;
                     playercount = playercount - randomNum;
-                    alert("Počet hráčů ve hře: " + playercount-randomNum + " hráčů")
+                    alert("Počet hráčů ve hře: " + playercount)
                     
                 }
                 // hráč nepoužil zbraň ztratil 17hp
                 else {
                     Health = Health - 17;
                     alert("Dal ti zabrat ale porazil si ho. Tvé zdraví je nyní " + Health + " hp.")
+                    if (Health <= 0) {
+                        alert("Prohrál jsi! Zemřel jsi a hra končí.")
+                        return;
+                    }
                     alert("Inventář: Brokovnice")
-                    let randomNum = Math.floor(Math.random() * 3) + 1;
+                    let randomNum = Math.floor(Math.random() * 8) + 1;
                     playercount = playercount - randomNum;
-                    alert("Počet hráčů ve hře: " + playercount + " hráčů")
+                    alert("Počet hráčů ve hře: " + playercount)
                     
                 
                 }
@@ -126,9 +135,9 @@ function fortnite_start() {
                 alert("Našel si na zemi samopal a vzal sis ho.")
                 RangedWeapon = true;
                 alert("Inventář: Samopal")
-                let randomNum = Math.floor(Math.random() * 3) + 1;
+                let randomNum = Math.floor(Math.random() * 8) + 1;
                 playercount = playercount - randomNum;
-                alert("Počet hráčů ve hře: " + playercount + " hráčů")
+                alert("Počet hráčů ve hře: " + playercount)
 
                 break;
             default:
@@ -139,23 +148,38 @@ function fortnite_start() {
     alert("Nepřítel: Hej ty! Co tu děláš?!")
 
 
+        // zakomponovat možnost, kdy nemám ani jednu ze zbraní 
+    if (MeleeWeapon == false && RangedWeapon == false && Shotgun == false) {
+        Health = Health - 15;
+        alert("Nemáš žádnou zbraň a tak jsi ho bojoval pouze pěstmi stálo tě to 15 hp. Tvé zdraví je nyní " + Health + " hp")
+        if (Health <= 0) {
+            alert("Prohrál jsi! Zemřel jsi a hra končí.")
+            return;
+        }
+    }
+
+
     if (MeleeWeapon == true) {
     let choice_late_game = prompt("Chceš použít nůž? (+5damage) (ano/ne): ")
     if (choice_late_game == "ano") {
         MeleeWeapon = false;
         alert("Zabil jsi ho ale ztratil jsi nůž a tvé zdraví je nyní " + Health + " hp")
         alert("Inventář: Prázdný")
-        let randomNum = Math.floor(Math.random() * 15) + 1;
+        let randomNum = Math.floor(Math.random() * 15) + 5;
         playercount = playercount - randomNum;
-        alert("Počet hráčů ve hře: " + playercount + " hráčů")
+        alert("Počet hráčů ve hře: " + playercount)
     }
     else {
         Health = Health - 10;
         alert("Bylo to těsné ale měl jsi štěstí! a tvé zdraví je nyní " + Health + " hp")
+        if (Health <= 0) {
+            alert("Prohrál jsi! Zemřel jsi a hra končí.")
+            return;
+        }
         alert("Tvůj inventář: Nůž")
-        let randomNum = Math.floor(Math.random() * 5) + 1;
+        let randomNum = Math.floor(Math.random() * 15) + 5;
         playercount = playercount - randomNum;
-        alert("Počet hráčů ve hře: " + playercount + " hráčů")
+        alert("Počet hráčů ve hře: " + playercount)
         
     }}
     if (RangedWeapon == true) {
@@ -164,17 +188,21 @@ function fortnite_start() {
             RangedWeapon = false;
             alert("Zabil jsi ho ale ztratil jsi samopal a tvé zdraví je nyní " + Health + " hp")
             alert("Inventář: Prázdný")
-            let randomNum = Math.floor(Math.random() * 15) + 1;
+            let randomNum = Math.floor(Math.random() * 15) + 5;
             playercount = playercount - randomNum;
-            alert("Počet hráčů ve hře: " + playercount + " hráčů")
+            alert("Počet hráčů ve hře: " + playercount)
         }
         else {
             Health = Health - 10;
             alert("Bylo to těsné ale měl jsi štěstí! a tvé zdraví je nyní " + Health + " hp")
+            if (Health <= 0) {
+                alert("Prohrál jsi! Zemřel jsi a hra končí.")
+                return;
+            }
             alert("Tvůj inventář: Samopal")
-            let randomNum = Math.floor(Math.random() * 20) + 1;
+            let randomNum = Math.floor(Math.random() * 20) + 5;
             playercount = playercount - randomNum;
-            alert("Počet hráčů ve hře: " + playercount + " hráčů")
+            alert("Počet hráčů ve hře: " + playercount)
             
         }}
     
@@ -182,28 +210,64 @@ function fortnite_start() {
         let choice_late_game = prompt("Chceš použít brokovnici? (+15damage) (ano/ne): ")
         if (choice_late_game == "ano") {
             Shotgun = false;
-            alert("Zabil jsi ho ale ztratil jsi brokovnici a tvé zdraví je nyní " + Health + " hp")
+            alert("Zabil jsi ho ale rozbil jsi brokovnici a tvé zdraví je nyní " + Health + " hp")
             alert("Inventář: Prázdný")
-            let randomNum = Math.floor(Math.random() * 15) + 1;
+            let randomNum = Math.floor(Math.random() * 15) + 5;
             playercount = playercount - randomNum;
-            alert("Počet hráčů ve hře: " + playercount + " hráčů")
+            alert("Počet hráčů ve hře: " + playercount)
         }
         else {
             Health = Health - 10;
             alert("Bylo to těsné ale měl jsi štěstí! a tvé zdraví je nyní " + Health + " hp")
+            if (Health <= 0) {
+                alert("Prohrál jsi! Zemřel jsi a hra končí.")
+                return;
+            }
             alert("Tvůj inventář: Brokovnice")
-            let randomNum = Math.floor(Math.random() * 20) + 1;
+            let randomNum = Math.floor(Math.random() * 20) + 5;
             playercount = playercount - randomNum;
-            alert("Počet hráčů ve hře: " + playercount + " hráčů")
+            alert("Počet hráčů ve hře: " + playercount)
             
         }}
-    // zakomponovat možnost, kdy nemám ani jednu ze zbraní 
-
-
-    // let choice_late_game = prompt(" ")
+    
+    alert("Čas uplynul a zjistil jsi, že to je již pouze mezi tebou a posledním protivníkem hry...")
+    alert("Poslední hráč: Ty a já. Jeden z nás musí zemřít. Jsem připravený na boj. Ty taky?")
+    let final_choice = prompt("Chceš bojovat? (ano/ne): ")
+    if (final_choice == "ano") {
+        if (MeleeWeapon == true) {
+            alert("Bojuješ s posledním hráčem. Je to těžký boj ale víš že máš nůž, který ti může pomoct.")
+            let vyhra = 1;
+            if (vyhra == 1) {
+                alert("Gratuluji! Vyhrál jsi hru a stal seš posledním hráčem ve hře!")
+                return;
+        }
+        else if (RangedWeapon == true) {
+            alert("Bojuješ s posledním hráčem. Je to těžký boj ale víš že máš samopal, který ti může pomoct.")
+            let vyhra = 1;
+            if (vyhra == 1) {
+                alert("Gratuluji! Vyhrál jsi hru a stal seš posledním hráčem ve hře!")
+                return;
+        }
+        else if (Shotgun == true) {
+            alert("Bojuješ s posledním hráčem. Je to těžký boj ale víš že máš brokovnici, který ti může pomoct.")
+            let vyhra = 1;
+            if (vyhra == 1) {
+                alert("Gratuluji! Vyhrál jsi hru a stal seš posledním hráčem ve hře!")
+                return;
+        }
+        else{
+            alert("Bojuješ s posledním hráčem. Je to těžký boj ale... nemáš žádnou zbraň. Prohrál jsi! Zemřel jsi a hra končí.")
+            return;}
+    }
+        
+    }
+    else {
+        alert("Prohrál jsi! Protože tě zabil a hra končí.")
+        return;
+    }
     
     }
     else {
         alert("jak? se to stalo jako")
     }
-}
+}}}
