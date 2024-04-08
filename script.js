@@ -247,27 +247,24 @@ function fortnite_start() {
             if (vyhra == 1) {
                 alert("Gratuluji! Vyhrál jsi hru a stal seš posledním hráčem ve hře!")
                 return;
-        }
+        }}
         else if (Shotgun == true) {
             alert("Bojuješ s posledním hráčem. Je to těžký boj ale víš že máš brokovnici, který ti může pomoct.")
             let vyhra = 1;
             if (vyhra == 1) {
                 alert("Gratuluji! Vyhrál jsi hru a stal seš posledním hráčem ve hře!")
                 return;
-        }
+        }}
         else{
             alert("Bojuješ s posledním hráčem. Je to těžký boj ale... nemáš žádnou zbraň. Prohrál jsi! Zemřel jsi a hra končí.")
-            return;}
+            return;
+        }
     }
         
-    }
     else {
         alert("Prohrál jsi! Protože tě zabil a hra končí.")
         return;
     }
     
-    }
-    else {
-        return;
-    }
-}}}
+    }}
+}
