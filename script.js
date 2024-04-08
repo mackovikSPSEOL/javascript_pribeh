@@ -268,6 +268,6 @@ function fortnite_start() {
     
     }
     else {
-        alert("jak? se to stalo jako")
+        return;
     }
 }}}
